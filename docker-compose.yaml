@@ -1,0 +1,36 @@
+version: '3.7'
+services:
+  api:
+    build:
+      context: .
+      target: development
+    image: lanchonete-api
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - db-lanchonete
+    entrypoint: /usr/src/app/entrypoint.sh
+    volumes:
+      - .:/usr/src/app/
+      - /usr/src/app/node_modules
+    networks:
+      - lanchonete-network
+  db-lanchonete:
+    image: postgres
+    container_name: db-lanchonete
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - lanchonete-network
+volumes:
+  postgres_data:
+networks:
+  lanchonete-network:
+    name: school-app-network

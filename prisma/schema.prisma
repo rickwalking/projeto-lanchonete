@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id            Int      @id @default(autoincrement())
+  nome          String
+  cpf           String   @unique
+  email         String   @unique
+  criado_em     DateTime @default(now())
+  atualizado_em DateTime @default(now())
+}
+
+model Produto {
+  id            Int       @id @default(autoincrement())
+  nome          String    @unique
+  preco         Decimal
+  descricao     String
+  quantidade    Int
+  categoria     Categoria @relation(fields: [categoria_id], references: [id])
+  categoria_id  Int
+  pedido        Pedido[]
+  criado_em     DateTime  @default(now())
+  atualizado_em DateTime  @default(now())
+}
+
+model Categoria {
+  id            Int       @id @default(autoincrement())
+  nome          String    @unique
+  Produto       Produto[]
+  criado_em     DateTime  @default(now())
+  atualizado_em DateTime  @default(now())
+}
+
+model Pedido {
+  id            Int           @id @default(autoincrement())
+  pedido_id     String        @unique @default(uuid())
+  total         Decimal?
+  status        EtapasPedido?
+  usuario_id    Int?
+  produtos      Produto[]
+  pagamento     Pagamento[]
+  criado_em     DateTime      @default(now())
+  atualizado_em DateTime      @default(now())
+}
+
+model Pagamento {
+  id            Int      @id @default(autoincrement())
+  pedido_id     String
+  provedor_id   String
+  provedor      String
+  pedido        Pedido   @relation(fields: [pedido_id], references: [pedido_id])
+  criado_em     DateTime @default(now())
+  atualizado_em DateTime @default(now())
+}
+
+enum EtapasPedido {
+  RECEBIDO
+  EM_PREPARO
+  PRONTO
+  FINALIZADO
+}

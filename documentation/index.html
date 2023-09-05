@@ -1,0 +1,247 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>projeto-lanchonete2 documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="./" class="navbar-brand">projeto-lanchonete2 documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1>Tech Challenge - Pós-Tech SOAT - FIAP</h1>
+<p>Alunos:</p>
+<ul>
+<li>Pedro Henrique de Marins da Silva - RM348617</li>
+<li>Rogério Sampaio Stubs -  RM349115</li>
+<li>Gustavo Jorge Franco Teles dos Santos - RM349553</li>
+</ul>
+<h2>O PROBLEMA</h2>
+<p>Há uma lanchonete de bairro que está expandindo devido seu grande sucesso. Porém, com a expansão e sem um sistema de controle de pedidos, o atendimento aos clientes pode ser caótico e confuso. Por exemplo, imagine que um cliente faça um pedido complexo, como um hambúrguer personalizado com ingredientes específicos, acompanhado de batatas fritas e uma bebida. O atendente pode anotar o pedido em um papel e entregá-lo à cozinha, mas não há garantia de que o pedido será preparado corretamente.</p>
+<p>Sem um sistema de controle de pedidos, pode haver confusão entre os atendentes e a cozinha, resultando em atrasos na preparação e entrega dos pedidos. Os pedidos podem ser perdidos, mal interpretados ou esquecidos, levando à insatisfação dos clientes e a perda de negócios.</p>
+<p>Em resumo, um sistema de controle de pedidos é essencial para garantir que a lanchonete possa atender os clientes de maneira eficiente, gerenciando seus pedidos e estoques de forma adequada. Sem ele, expandir a lanchonete pode acabar não dando certo, resultando em clientes insatisfeitos e impactando os negócios de forma negativa.</p>
+<p>Para solucionar o problema, a lanchonete irá investir em um sistema de autoatendimento de fast food, que é composto por uma série de dispositivos e interfaces que permitem aos clientes selecionar e fazer pedidos sem precisar interagir com um atendente, com as seguintes
+funcionalidades:</p>
+<h2>ENTREGA FASE 1</h2>
+<ul>
+<li>Documentação do sistema (DDD) utilizando a linguagem ubíqua, dos seguintes fluxos:<ul>
+<li>Realização do pedido e pagamento</li>
+<li>Preparação e entrega do pedido</li>
+</ul>
+</li>
+<li>Uma aplicação para todo sistema de backend (monolito) que deverá ser desenvolvido seguindo os padrões apresentados nas aulas:<ul>
+<li>Utilizando arquitetura hexagonal</li>
+<li>APIs:<ul>
+<li>Cadastro do Cliente</li>
+<li>Identificação do Cliente via CPF</li>
+<li>Criar, editar e remover de produto</li>
+<li>Buscar produtos por categoria</li>
+<li>Fake checkout, apenas enviar os produtos escolhidos para a fila</li>
+<li>Listar os pedidos</li>
+</ul>
+</li>
+<li>Aplicação deverá ser escalável para atender grandes volumes nos horários de pico</li>
+<li>Banco de dados a sua escolha</li>
+<li>Inicialmente deveremos trabalhar e organizar a fila dos pedidos apenas em banco de dados</li>
+<li>A aplicação deve ser entregue com um Dockerfile configurado para executá-la corretamente.</li>
+<li>Para validação da POC, temos a seguinte limitação de infraestrutura:<ul>
+<li>1 instância para banco de dados</li>
+<li>1 instâncias para executar aplicação</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Arquitetura</h2>
+<p>A arquitetura dessa API segue os princípios de Arquitetura Hexagonal (Ports and Adapters). Essa arquitetura pode ser dividida em duas partes:</p>
+<ul>
+<li>Condutores: (ou atores primários): Podem ser definidos como atores que iniciam a interação. Por exemplo, um condutor pode ser um controller que recebe um input de um usuário e redireciona a aplicação utilizando uma Port(interface).</li>
+<li>Conduzidos: (também conhecido como atores secundários): São parte da camada de infrasctructure da aplicação. Podem ser utilizados para adicionar funcionalidades para o domínio da aplicação. Exemplos: Banco de dados, APIs externas.</li>
+</ul>
+<p><img src="https://github.com/rickwalking/projeto-lanchonete/assets/25574889/12ddab40-97ec-4157-a1ae-803d258654ea" alt="Untitled Diagram drawio" class="img-responsive"></p>
+<ul>
+<li>Esquema de Domain Driven Design (DDD) no <a href="https://miro.com/welcomeonboard/TG9pRTJMU1BNb2d4WUZvdE9PVHd1cEZudmpaczNhdDNMOVVmeDE0S0VOZkVDSmFDSG5uaU0waUZzdFV5Q1h5aXwzNDU4NzY0NTU1MDkxMDI0MTAxfDI=?share_link_id=171801921364">Miro</a></li>
+</ul>
+<h2>Projeto</h2>
+<p><a href="https://github.com/rickwalking/projeto-lanchonete">Gituhb</a></p>
+<p>Este projeto está pronto para ser executado em um ambiente Docker. Por este motivo, será necessária apenas a instalação do Docker, não sendo necessária a instalação manual do projeto. Também não será necessária a instalação manual do banco de dados.</p>
+<p>Caso não tenha o Docker instalado, siga as instruções para seu sistema operacional na <a href="https://docs.docker.com/get-docker/">documentação oficial do Docker</a>.</p>
+<h3>Para executar em ambiente de desenvolvimento:</h3>
+<ul>
+<li>Clone este repositório em seu computador;</li>
+<li>Entre no diretório local onde o repositório foi clonado;</li>
+<li>Altere o arquivo .env.example para .env </li>
+<li>Preencha os campos dentro arquivo</li>
+<li>Utilize o comando <code> docker compose up --build</code> para &quot;build&quot; e subir o servidor local e expor a porta 3000 em <code>localhost</code>. Além de <code>dev</code> também subirá o serviço <code>db</code> com o banco de dados de desenvolvimento.</li>
+</ul>
+<p><strong>IMPORTANTE:</strong> Esta API está programada para ser acessada a partir de <code>http://localhost:3000</code> e o banco de dados utiliza a porta <code>5432</code>. Certifique-se de que não existam outros recursos ocupando as portas acima.</p>
+<p>Para desativar os serviços, execute o comando <code>docker-compose down</code>.</p>
+<h2>Endpoints</h2>
+<p>A API expõe os seguintes <em>endpoints</em> a partir da <em>base URL</em> <code>localhost:3000</code>:</p>
+<p><a href="http://localhost:3000/api#/">Swagger Path</a></p>
+<h3><code>/usuario</code></h3>
+<ul>
+<li><code>POST</code> - Criar usuário<ul>
+<li>Body</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-none">{
+ &quot;cpf&quot;: &quot;string&quot;,
+ &quot;nome&quot;: &quot;string&quot;,
+ &quot;email&quot;: &quot;string&quot;
+}</code></pre></div></li>
+<li><code>POST /identificar/</code> - Identificar usuário<ul>
+<li>Body</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-none">{
+ &quot;cpf&quot;: &quot;string&quot;
+}</code></pre></div></li>
+</ul>
+<h3><code>/produto</code></h3>
+<ul>
+<li><code>POST</code> - Criar produto<ul>
+<li>Body</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-none">{
+ &quot;nome&quot;: &quot;string&quot;,
+ &quot;preco&quot;: &quot;number&quot;,
+ &quot;descricao&quot;: &quot;string&quot;,
+ &quot;quantidade&quot;: &quot;string&quot;,
+ &quot;categoria&quot;: {
+   &quot;nome&quot;: &quot;string&quot;
+ }
+}</code></pre></div></li>
+<li><code>GET</code> - Listar produtos por categoria<ul>
+<li>QueryParams - nomeCategoria</li>
+</ul>
+</li>
+<li><code>DELETE /:id</code> - Deletar produto</li>
+<li><code>PUT /:id</code><ul>
+<li>Body</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-none">{
+ &quot;nome&quot;: &quot;string&quot;,
+ &quot;preco&quot;: &quot;number&quot;,
+ &quot;descricao&quot;: &quot;string&quot;,
+ &quot;quantidade&quot;: &quot;string&quot;,
+ &quot;categoria&quot;: {
+   &quot;nome&quot;: &quot;string&quot;
+ }
+}</code></pre></div></li>
+</ul>
+<h3><code>/pedido</code></h3>
+<ul>
+<li><code>POST /pagar/:pedido_id</code> - Pagar pedido pelo id</li>
+<li><code>PUT /preparo/:pedido_id</code> - Iniciar pedido</li>
+<li><code>PUT /pronto/:pedido_id</code> - Marcar como pronto</li>
+<li><code>PUT /entregue/:pedido_id</code> - Marcar como entregue</li>
+<li><code>PUT /:pedido_id</code> - Atualizar pedido<ul>
+<li>Body</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-none">{
+ &quot;produtos&quot;: [&quot;number&quot;],
+ &quot;status&quot;: &quot;EtapasPedido&quot;,
+}</code></pre></div></li>
+<li><code>GET /fila</code> - Retorna o item na fila</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

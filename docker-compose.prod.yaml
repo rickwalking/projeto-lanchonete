@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  api:
+    image: lanchonete
+    ports:
+      - "80:3000"
+    env_file:
+      - .env
+    depends_on:
+      - db-lanchonete-prod
+    networks:
+      - lanchonete-prod-network
+  db-lanchonete-prod:
+    image: postgres
+    container_name: db-lanchonete-prod
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - lanchonete-prod-network
+volumes:
+  postgres_data:
+networks:
+  lanchonete-prod-network:
+    name: lanchonete-prod-network
