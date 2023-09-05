@@ -27,7 +27,7 @@ funcionalidades:
 
 
 ### Fluxo de Pagamento com Mercado Pago 
-<img  src="https://i.imgur.com/AH198FV.png" />
+<img  src="https://i.imgur.com/Df8C9c6.png" />
 
 ### Rotas da API
 
